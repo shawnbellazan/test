@@ -59,8 +59,10 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     /* Dependency Injection */
-    implementation(libs.hilt.dagger)
-    annotationProcessor(libs.hilt.dagger.compiler)
+    implementation(libs.hilt.dagger) // TODO: describe package use.
+    annotationProcessor(libs.hilt.dagger.compiler) // TODO: describe package use.
+    androidTestImplementation(libs.hilt.dagger.test) // For instrumentation tests - DI
+    testImplementation(libs.hilt.dagger.test) // For local unit tests -DI
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
