@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.tooensure.poppas.travel.screens.SplashScreen
 import com.tooensure.poppas.travel.ui.theme.TravelTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,28 +19,26 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TravelTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
+            MainScreen {
+                SplashScreen()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
-            modifier = modifier
-    )
+fun MainScreen(content: @Composable () -> Unit) {
+    TravelTheme {
+        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+            content()
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    TravelTheme {
-        Greeting("Android")
+fun MainSplashScreenPreview() {
+    MainScreen {
+        SplashScreen()
     }
 }
