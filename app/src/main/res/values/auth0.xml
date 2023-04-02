@@ -1,0 +1,5 @@
+<resources>
+    <string name="com_auth0_scheme">app</string>
+    <string name="com_auth0_domain">dev-tooensure.us.auth0.com</string>
+    <string name="com_auth0_client_id">KN5WpXx97BZMC5clfoAOjuytOjDXR2Jh</string>
+</resources>

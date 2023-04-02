@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.google.dagger.hilt.android)
-
 }
 
 android {
@@ -11,11 +10,13 @@ android {
 
     defaultConfig {
         applicationId = "com.tooensure.poppas.travel"
-        minSdk = 24
+        minSdk = 30
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
+        manifestPlaceholders["auth0Domain"] = "@string/com_auth0_domain"
+        manifestPlaceholders["auth0Scheme"] = "@string/com_auth0_scheme"
+//        manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "@string/com_auth0_scheme"]
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -59,7 +60,10 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     /* Dependency Injection */
-    implementation(libs.hilt.dagger) // TODO: describe package use.
+    implementation(libs.hilt.dagger)
+    implementation(libs.auth0) // TODO: describe package use.
+    implementation(libs.jwt.decoder)
+    implementation(libs.hilt.navigation) // TODO: describe package use.
     annotationProcessor(libs.hilt.dagger.compiler) // TODO: describe package use.
     androidTestImplementation(libs.hilt.dagger.test) // For instrumentation tests - DI
     testImplementation(libs.hilt.dagger.test) // For local unit tests -DI
